@@ -3,8 +3,8 @@ import Card from '../../shared/components/UIElements/Card';
 
 import './UserList.css';
 
-const UserList = ({ users }) => {
-  if (users?.length === 0) {
+const UserList = ({ items }) => {
+  if (items?.length === 0) {
     return (
       <div className='center'>
         <Card>
@@ -16,8 +16,14 @@ const UserList = ({ users }) => {
 
   return (
     <ul className='users-list'>
-      {users.map(user => (
-        <UserItem key={user.id} user={user} />
+      {items.map(user => (
+        <UserItem
+          key={user.id}
+          image={user.image}
+          placeCount={user.places.length}
+          id={user.id}
+          name={user.name}
+        />
       ))}
     </ul>
   );

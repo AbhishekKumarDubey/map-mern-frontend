@@ -4,17 +4,20 @@ import Avatar from '../../shared/components/UIElements/Avatar';
 import Card from '../../shared/components/UIElements/Card';
 import './UserItem.css';
 
-const UserItem = ({ user: { id, image, name, places } }) => (
+const UserItem = ({ id, image, name, placeCount }) => (
   <li className='user-item'>
     <Card className='user-item__content'>
       <Link to={`/${id}/places`}>
         <div className='user-item__image'>
-          <Avatar image={image} alt={name} />
+          <Avatar
+            image={`${process.env.REACT_APP_ASSET_URL}/${image}`}
+            alt={name}
+          />
         </div>
         <div className='user-item__info'>
           <h2>{name}</h2>
           <h3>
-            {places} {places > 0 ? 'Places' : 'Place'}
+            {placeCount} {placeCount > 0 ? 'Places' : 'Place'}
           </h3>
         </div>
       </Link>
